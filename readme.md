@@ -1,8 +1,8 @@
 # node logger
 
-    import Logger from 'better-logger';
-    import FileAppender from 'better-logger/file_appender';
-    import ConsoleAppender from 'better-logger/console_appender';
+    import Logger from 'better-loger';
+    import FileAppender from 'better-loger/file_appender';
+    import ConsoleAppender from 'better-loger/console_appender';
 
     // 日志输出到文件,配置logrotate:
     const fileAppender = new FileAppender({
