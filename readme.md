@@ -36,8 +36,8 @@
 
     // 使用默认模板
     logger.debug('debgu消息');
-    // 自定义模板,参数用来填充%m
-    // %e表示logger实例化时间,%i表示requestId,n表示从实例化到当前过了多少毫秒
+    // 自定义模板,用来记录访问日志
+    // %e表示logger实例化时候时间,%i表示实例化时候生成的6位随机id,n表示从实例化到当前过了多少毫秒
     // 全部定义见formatter.help(方法)
     logger.info(`%e|%i|%4m|%60m|%7m|%5n`, [
       'GET',

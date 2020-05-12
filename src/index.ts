@@ -1,3 +1,4 @@
+import { genId } from 'better-utils';
 import Formatter, { FormatterInterface } from './formatter';
 import ConsoleAppender from './console_appender';
 import Appender from './appender';
@@ -33,6 +34,8 @@ class Logger {
     this.appender = [appender];
     this.formatter = formatter;
     this.name = name;
+    this.entryTime = Date.now();
+    this.reqId = genId();
   }
 
   static levelOrder: LevelStr[] = ['debug', 'info', 'warn', 'error'];
