@@ -1,27 +1,45 @@
 {
-  "name": "better-service",
+  "name": "better-logger",
   "version": "1.0.0",
-  "description": "node typescript server",
-  "main": "index.js",
-  "author": "zcs",
-  "license": "ISC",
-  "dependencies": {
-    "better-fs": "^11.0.4",
-    "better-utils": "^3.0.4"
+  "description": "nodejs logger",
+  "person": {
+    "name": "zhangchengsi",
+    "email": "530627552@qq.com",
+    "url": "https://github.com/zcs19871221"
   },
+  "keywords": [
+    "typescript",
+    "node log",
+    "logger",
+    "logging",
+    "logs",
+    "logrotate",
+    "loglevel",
+    "log4j"
+  ],
+  "license": "ISC",
   "scripts": {
-    "build": "tsc",
-    "test": "node ./node_modules/jest/bin/jest.js",
-    "watch": "tsc --watch",
-    "preversion": "npm run test && node ./bin/clean.js && npm run build",
-    "postversion": "node ./bin/copy.js && cd dist && npm publish"
+    "compile": "tsc",
+    "build": "node ./bin/clean.js && npm run compile && tsc",
+    "test": "jest",
+    "format": "prettier src --write",
+    "preversion": "npm run build",
+    "postversion": "node ./bin/copyPkg.js && cd dist && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zcs19871221/better-fs"
+  },
+  "dependencies": {
+    "@types/graceful-fs": "^4.1.3",
+    "graceful-fs": "^4.2.3"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.5",
-    "jest": "^25.5.4",
-    "prettier": "^1.19.1",
+    "@types/node": "^13.13.4",
+    "jest": "^25.5.2",
+    "prettier": "^2.0.5",
     "ts-jest": "^25.4.0",
-    "typescript": "^3.7.5"
+    "typescript": "^3.8.3"
   }
 }

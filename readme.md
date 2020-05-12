@@ -3,7 +3,7 @@
     import Logger from 'better-logger';
     import FileAppender from 'better-logger/file_appender';
     import ConsoleAppender from 'better-logger/console_appender';
-    
+
     // 日志输出到文件,配置logrotate:
     const fileAppender = new FileAppender({
       // 标准输出目标
@@ -25,8 +25,10 @@
       threshold: 'debug'
     });
 
-    // 获取logger对象,唯一key
+    // 获取logger对象,唯一key,默认集成了consoleAppender
     const logger = Logger.get('uniqId');
+    // 设置日志等级,当方法等级超过设置的等级且超过了appender等级,才会输出
+    logger.setLevel('debug')
     // 设置appender为console
     logger.setAppender(consoleAppender);
     // 添加文件appender
