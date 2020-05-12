@@ -1,7 +1,6 @@
 import * as fs from 'better-fs';
 import Appender from './appender';
-import Logger from '.';
-import { LevelStr } from './index.d';
+import Logger, { LevelStr } from '.';
 
 export default class FileAppender extends Appender {
   private errorLocate: string;

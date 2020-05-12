@@ -1,4 +1,4 @@
-import { LevelStr } from './index.d';
+import { LevelStr } from '.';
 
 export default abstract class Appender {
   threshold: LevelStr;

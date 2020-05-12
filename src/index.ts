@@ -1,7 +1,14 @@
 import Formatter, { FormatterInterface } from './formatter';
 import ConsoleAppender from './console_appender';
-import { LevelEnum, LevelStr } from './index.d';
 import Appender from './appender';
+
+export enum LevelEnum {
+  debug,
+  info,
+  warn,
+  error,
+}
+export type LevelStr = keyof typeof LevelEnum;
 
 class Logger {
   private level: LevelStr;
@@ -214,5 +221,4 @@ class Logger {
     this.entryTime = entry;
   }
 }
-export { LevelStr };
 export default Logger;
