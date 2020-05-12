@@ -1,6 +1,6 @@
 {
   "name": "better-logger",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "nodejs logger",
   "person": {
     "name": "zhangchengsi",
@@ -20,11 +20,11 @@
   "license": "ISC",
   "scripts": {
     "compile": "tsc",
-    "build": "node ./bin/clean.js && npm run compile && tsc",
+    "build": "npm test && node ./bin/clean.js && npm run compile",
     "test": "jest",
     "format": "prettier src --write",
     "preversion": "npm run build",
-    "postversion": "node ./bin/copyPkg.js && cd dist && npm publish"
+    "postversion": "node ./bin/copy_pkg.js && cd dist && npm publish"
   },
   "repository": {
     "type": "git",

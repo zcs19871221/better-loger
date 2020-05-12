@@ -1,4 +1,4 @@
 const path = require('path');
-const fs = require('better-fs');
+const remove = require('../dist/remove_sync').default;
 
-fs.remove(path.join(__dirname, '../dist'));
+remove(path.join(__dirname, '../dist'));
