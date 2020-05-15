@@ -42,3 +42,17 @@ it('test change pattern', () => {
     }),
   ).toBe('hello world');
 });
+
+it('test locate', () => {
+  const formater = new Formatter();
+
+  expect(
+    formater['parseStack']('    at E:\\headless_deploy\\dist\\index.js:70:32'),
+  ).toBe('index.js-70:32');
+
+  expect(
+    formater['parseStack'](
+      '    at main (E:\\headless_deploy\\dist\\index.js:173:16)',
+    ),
+  ).toBe('index.js-173:16');
+});

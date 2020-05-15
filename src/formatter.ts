@@ -79,22 +79,26 @@ export default class Formatter implements FormatterInterface {
     });
   }
 
+  private parseStack(stack: string) {
+    if (stack) {
+      const [funcName, row, col] = stack
+        .replace(/.*?([^\\/]+)?$/, '$1')
+        .replace(/[()]/g, '')
+        .split(':');
+      if (funcName && row) {
+        stack = `${funcName}-${row}:${col}`;
+      }
+      return stack;
+    }
+    return '';
+  }
+
   private handleLocate(pattern: string) {
     return pattern.replace(
       new RegExp(`%${this.conversionReg().source}l`, 'g'),
       (_match: any, conversion: string) => {
         let invokeStack = (new Error().stack || '').split('\n')[9];
-        if (invokeStack) {
-          let [funcName = '', locate = ''] = invokeStack
-            .trim()
-            .replace('at ', '')
-            .split(/\s+/);
-          funcName = funcName.replace(/.*?\.(.*)/, '$1');
-          locate = (locate.match(/[^\\/]+$/) || [''])[0].replace(')', '');
-          if (funcName && locate) {
-            invokeStack = `${funcName}-${locate}`;
-          }
-        }
+        invokeStack = this.parseStack(invokeStack);
         return this.handleConversion(conversion, invokeStack);
       },
     );
